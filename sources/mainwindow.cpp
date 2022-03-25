@@ -381,9 +381,9 @@ void MainWindow::handleActionAbout()
 void MainWindow::handleActionApk()
 {
     const QString path = QFileDialog::getOpenFileName(this,
-                                                      tr("Browse APK"),
+                                                      tr("Browse APK or HAP"),
                                                       QString(),
-                                                      tr("Android APK File(s) (*.apk)"));
+                                                      tr("APK or HAP File(s) (*.hap *.apk)"));
 #ifdef QT_DEBUG
     qDebug() << "User selected to open" << path;
 #endif
@@ -783,6 +783,7 @@ void MainWindow::handleRecompileFinished(const QString &folder)
 #endif
         reloadChildren(parent);
         auto dist = m_ProjectsTree->findItems(".apk", Qt::MatchEndsWith | Qt::MatchRecursive, 0);
+        dist.append(m_ProjectsTree->findItems(".hap", Qt::MatchEndsWith | Qt::MatchRecursive, 0));
         foreach (auto child, dist) {
             if (child->data(0, Qt::UserRole + 1).toInt() == File) {
                 const QString path = child->data(0, Qt::UserRole + 2).toString();
@@ -974,7 +975,7 @@ void MainWindow::handleTreeContextMenu(const QPoint &point)
         menu.addSeparator();
         auto build = menu.addAction(tr("Build"));
         connect(build, &QAction::triggered, this, &MainWindow::handleActionBuild);
-        if (path.endsWith(".apk")) {
+        if (path.endsWith(".apk") || path.endsWith(".hap")) {
             menu.addSeparator();
             auto install = menu.addAction(tr("Install"));
             connect(install, &QAction::triggered, this, &MainWindow::handleActionInstall);
@@ -1029,7 +1030,7 @@ void MainWindow::handleTreeSelectionChanged(const QItemSelection &selected, cons
         auto index = selected.indexes().first();
         const int type = index.data(Qt::UserRole + 1).toInt();
         const QString path = index.data(Qt::UserRole + 2).toString();
-        apk = (type == File) && path.endsWith(".apk");
+        apk = (type == File) && (path.endsWith(".apk") || path.endsWith(".hap"));
     }
     m_ActionInstall1->setEnabled(apk);
     m_ActionInstall2->setEnabled(apk);
