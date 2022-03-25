@@ -7,7 +7,7 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication::setApplicationName("APK Studio");
+    QApplication::setApplicationName("APP Studio");
     QApplication::setOrganizationDomain("vaibhavpandey.com");
     QApplication::setOrganizationName("Vaibhav Pandey");
     int code = 0;

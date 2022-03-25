@@ -59,7 +59,7 @@ void AppearanceSettingsWidget::save()
     if (dark != m_RadioThemeDark->isChecked()) {
         int btn = QMessageBox::information(this,
                                            tr("Theme"),
-                                           tr("Changes to app theme will be applied only when you restart APK studio."),
+                                           tr("Changes to app theme will be applied only when you restart APP studio."),
                                            tr("Restart"),
                                            tr("OK"));
         if (btn == 0) {

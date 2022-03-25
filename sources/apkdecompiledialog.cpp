@@ -18,7 +18,7 @@ ApkDecompileDialog::ApkDecompileDialog(const QString &apk, QWidget *parent)
 #ifdef Q_OS_WIN
     setWindowIcon(QIcon(":/icons/fugue/android.png"));
 #endif
-    setWindowTitle(tr("Open APK"));
+    setWindowTitle(tr("Open APK or HAP"));
 }
 
 QString ApkDecompileDialog::apk() const
@@ -39,7 +39,7 @@ QWidget *ApkDecompileDialog::buildButtonBox()
 QLayout *ApkDecompileDialog::buildForm(const QString &apk)
 {
     auto layout = new QFormLayout();
-    layout->addRow(tr("APK"), m_EditApk = new QLineEdit(apk, this));
+    layout->addRow(tr("APK or HAP"), m_EditApk = new QLineEdit(apk, this));
     m_EditApk->setDisabled(true);
     layout->addRow(tr("Output"), m_EditFolder = new QLineEdit(this));
     m_EditFolder->setText(QString(apk).append("-decompiled"));

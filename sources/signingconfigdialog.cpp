@@ -14,7 +14,7 @@ SigningConfigDialog::SigningConfigDialog(QWidget *parent)
 #ifdef Q_OS_WIN
     setWindowIcon(QIcon(":/icons/fugue/edit-signiture.png"));
 #endif
-    setWindowTitle(tr("Sign APK"));
+    setWindowTitle(tr("Sign APK or HAP"));
 }
 
 QWidget *SigningConfigDialog::buildButtonBox()

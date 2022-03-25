@@ -92,7 +92,7 @@ win32:RC_ICONS += resources/icon.ico
 QMAKE_TARGET_COMPANY = Vaibhav Pandey -aka- VPZ
 QMAKE_TARGET_COPYRIGHT = Vaibhav Pandey
 QMAKE_TARGET_DESCRIPTION = Open-source, cross-platform Qt based IDE for reverse-engineering Android application packages.
-QMAKE_TARGET_PRODUCT = APK Studio
+QMAKE_TARGET_PRODUCT = APP Studio
 
 win32 {
     NULL_DEVICE = NUL

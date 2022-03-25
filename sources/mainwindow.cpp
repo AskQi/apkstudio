@@ -60,7 +60,7 @@ MainWindow::MainWindow(const QMap<QString, QString> &versions, QWidget *parent)
     setMenuBar(buildMenuBar());
     setMinimumSize(WINDOW_WIDTH, WINDOW_HEIGHT);
     setStatusBar(buildStatusBar(versions));
-    setWindowTitle(tr("APK Studio").append(" - https://vaibhavpandey.com/apkstudio/"));
+    setWindowTitle(tr("APP Studio(Support HarmonyOS)").append(" - https://vaibhavpandey.com/apkstudio/"));
     connect(QApplication::clipboard(), &QClipboard::dataChanged, this, &MainWindow::handleClipboardDataChanged);
     QSettings settings;
     const bool dark = settings.value("dark_theme", false).toBool();
@@ -207,7 +207,7 @@ QMenuBar *MainWindow::buildMenuBar()
     auto menubar = new QMenuBar(this);
     auto file = menubar->addMenu(tr("File"));
     auto open = file->addMenu(tr("Open"));
-    open->addAction(tr("APK"), this, &MainWindow::handleActionApk, QKeySequence::New);
+    open->addAction(tr("APK or HAP"), this, &MainWindow::handleActionApk, QKeySequence::New);
     open->addAction(tr("Folder"), this, &MainWindow::handleActionFolder, QKeySequence::Open);
     open->addSeparator();
     open->addAction(tr("File"), this, &MainWindow::handleActionFile);
@@ -990,7 +990,7 @@ void MainWindow::handleTreeContextMenu(const QPoint &point)
             });
         }
     } else {
-        auto apk = menu.addAction(tr("Open APK"));
+        auto apk = menu.addAction(tr("Open APK or HAP"));
         connect(apk, &QAction::triggered, this, &MainWindow::handleActionApk);
         auto folder = menu.addAction(tr("Open Folder"));
         connect(folder, &QAction::triggered, this, &MainWindow::handleActionFolder);
